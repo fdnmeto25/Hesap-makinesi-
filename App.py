@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 
 # API anahtarını buraya ekleyeceksin
-genai.configure(api_key="BURAYA_API_ANAHTARINI_YAZ")
+genai.configure(api_key="AQ.Ab8RN6JXA8IOQCR8nWKeeweJoBnqO5mcaH7i6xahhHHkvOzZFg")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 st.title("🤖 Metehan'ın Kişisel Asistanı")
