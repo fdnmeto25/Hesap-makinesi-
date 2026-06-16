@@ -1,8 +1,9 @@
 import streamlit as st
 import google.generativeai as genai
 
-# API anahtarını buraya ekleyeceksin
-genai.configure(api_key="AQ.Ab8RN6JXA8IOQCR8nWKeeweJoBnqO5mcaH7i6xahhHHkvOzZFg")
+# Anahtarını buraya yapıştır
+genai.configure(api_key="AIza.Ab8RN6Jb3cYSOygOD3aQG1fjNJ0JnfhYhYrPd5bJfyzloHCN8w")
+
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 st.title("🤖 Metehan'ın Kişisel Asistanı")
@@ -13,4 +14,5 @@ if st.button("Sor"):
     if soru:
         cevap = model.generate_content(soru)
         st.write(cevap.text)
-        
+
+
