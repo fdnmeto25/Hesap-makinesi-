@@ -1,26 +1,16 @@
-# import streamlit as st
-import random
+import streamlit as st
+import google.generativeai as genai
 
-st.title("🎯 Sayı Tahmin Ustası - Pro")
+# API anahtarını buraya ekleyeceksin
+genai.configure(api_key="BURAYA_API_ANAHTARINI_YAZ")
+model = genai.GenerativeModel('gemini-1.5-flash')
 
-if 'sayi' not in st.session_state:
-    st.session_state.sayi = random.randint(1, 100)
-    st.session_state.sayac = 0
+st.title("🤖 Metehan'ın Kişisel Asistanı")
 
-tahmin = st.number_input("Tahminini gir (1-100):", min_value=1, max_value=100)
+soru = st.text_input("Bana bir şey sor:")
 
-if st.button("Kontrol Et"):
-    st.session_state.sayac += 1
-    if tahmin < st.session_state.sayi:
-        st.warning("Daha büyük bir sayı gir!")
-    elif tahmin > st.session_state.sayi:
-        st.warning("Daha küçük bir sayı gir!")
-    else:
-        st.success(f"Tebrikler! {st.session_state.sayac}. denemede buldun.")
-        st.balloons()
-        if st.button("Yeniden Başla"):
-            st.session_state.sayi = random.randint(1, 100)
-            st.session_state.sayac = 0
-            st.rerun()
-
-st.write(f"Şu ana kadar {st.session_state.sayac} tahmin yaptın.")
+if st.button("Sor"):
+    if soru:
+        cevap = model.generate_content(soru)
+        st.write(cevap.text)
+        
